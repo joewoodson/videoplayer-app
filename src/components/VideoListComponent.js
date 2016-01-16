@@ -8,12 +8,12 @@ require('styles/VideoList.sass');
 
 const VideoListComponent = (props) => {
 	const videoItems = props.videos.map((video) => {
-		return <VideoListItem key={uniqid()} video={video} />
+		return <VideoListItem key={uniqid()} video={video} onVideoSelect={props.onVideoSelect} />
 	})
 
 	return (
 		<ul>
-			{videoItems}
+			{videoItems};
 		</ul>
 	);
 }

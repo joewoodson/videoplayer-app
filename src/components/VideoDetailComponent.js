@@ -1,18 +1,32 @@
 'use strict';
 
 import React from 'react';
+import Col from 'react-bootstrap/lib/Col';
+import ResponsiveEmbed from 'react-bootstrap/lib/ResponsiveEmbed';
 
 require('styles/VideoDetail.sass');
 
-class VideoDetailComponent extends React.Component {
-  render() {
-    return (
-      <div className="videodetail-component">
-        Please edit src/components///VideoDetailComponent.js to update this component!
-      </div>
-    );
-  }
-}
+const VideoDetailComponent = ({video}) => {
+	if(!video) {
+		return <Col sm={8}>Loading...</Col>;
+	}
+
+	const videoId = video.id.videoId;
+	const url = `https://www.youtube.com/embed/${videoId}`;
+
+  return (
+  	<Col sm={8}>
+  		<ResponsiveEmbed a16by9>
+  			<iframe src={url} />
+  		</ResponsiveEmbed>
+  		<div className='details'>
+  			<div className='video-title'>{video.snippet.title}</div>
+  			<div className='video-desc'>{video.snippet.description}</div>
+  		</div>
+  	</Col>
+  )
+
+};
 
 VideoDetailComponent.displayName = 'VideoDetailComponent';
 

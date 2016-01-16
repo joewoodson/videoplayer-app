@@ -8,11 +8,11 @@ import Image from 'react-bootstrap/lib/Image';
 require('styles/VideoListItem.sass');
 require('bootstrap/dist/css/bootstrap.css');
 
-const VideoListItemComponent = ({video}) => {
+const VideoListItemComponent = ({video, onVideoSelect}) => {
 	const imageUrl = video.snippet.thumbnails.default.url;
 
 	return (
-		<Col className='video-listing' sm={4} smOffset={8}>
+		<Col onClick={() => onVideoSelect(video)} className='video-listing' sm={4}>
 			<Panel>
 				<div>
 				 <Col md={5}>
@@ -20,7 +20,7 @@ const VideoListItemComponent = ({video}) => {
 				 </Col>
 
 				 <Col md={7}>
-				 	<div className='video-title'>{video.snippet.title}</div>
+				 	<div className='video-list-title'>{video.snippet.title}</div>
 				 </Col>
 				</div>
 			</Panel>
